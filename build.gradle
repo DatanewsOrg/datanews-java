@@ -1,9 +1,10 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group 'io.datanews'
-version '0.1-SNAPSHOT'
+version '0.1'
 
 repositories {
     mavenCentral()
@@ -11,6 +12,24 @@ repositories {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        'datanews-java'(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "MyRepo" //  optional target repository name
+            url = "http://my.org.server/repo/url"
+            credentials {
+                username = 'alice'
+                password = 'my-password'
+            }
+        }
+    }
 }
 
 dependencies {

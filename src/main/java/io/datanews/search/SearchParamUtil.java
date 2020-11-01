@@ -1,14 +1,10 @@
 package io.datanews.search;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -92,10 +88,21 @@ final class SearchParamUtil {
       result.put("to", Collections.singleton(toDate.format(DATE_FORMAT)));
     }
 
-    result.put("source", sources);
-    result.put("country", countries.stream().map(Country::getUrlName).collect(Collectors.toSet()));
-    result.put("language", languages.stream().map(Language::getUrlName).collect(Collectors.toSet()));
-    result.put("topic", topics.stream().map(Topic::getUrlName).collect(Collectors.toSet()));
+    if (!sources.isEmpty()) {
+      result.put("source", sources);
+    }
+
+    if (!countries.isEmpty()) {
+      result.put("country", countries.stream().map(Country::getUrlName).collect(Collectors.toSet()));
+    }
+
+    if (!languages.isEmpty()) {
+      result.put("language", languages.stream().map(Language::getUrlName).collect(Collectors.toSet()));
+    }
+
+    if (!topics.isEmpty()) {
+      result.put("topic", topics.stream().map(Topic::getUrlName).collect(Collectors.toSet()));
+    }
 
     return result;
   }

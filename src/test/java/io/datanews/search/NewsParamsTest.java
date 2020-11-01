@@ -13,7 +13,6 @@ import java.util.Set;
 import io.datanews.model.Country;
 import io.datanews.model.Language;
 import io.datanews.model.SortBy;
-import io.datanews.model.Topic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -105,7 +104,6 @@ public class NewsParamsTest {
         .query("SomeQuery")
         .languages(Arrays.asList(Language.DA, Language.SV))
         .source("SomeSource")
-        .topic(Topic.SCIENCE)
         .country(Country.US)
         .country(Country.AT)
         .page(4)
@@ -116,7 +114,6 @@ public class NewsParamsTest {
     Map<String, Set<String>> expected = new HashMap<>();
     expected.put("country", new HashSet<>(Arrays.asList(Country.US.getUrlName(), Country.AT.getUrlName())));
     expected.put("page", Collections.singleton("4"));
-    expected.put("topic", Collections.singleton(Topic.SCIENCE.getUrlName()));
     expected.put("source", Collections.singleton("SomeSource"));
     expected.put("language", new HashSet<>(Arrays.asList(Language.DA.getUrlName(), Language.SV.getUrlName())));
     expected.put("q", Collections.singleton("SomeQuery"));
