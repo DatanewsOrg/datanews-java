@@ -4,7 +4,18 @@ This repo contains the official Datanews client library for Java.
 You can find full documentation on the [official website](https://datanews.io/docs).
 
 ## Installation
-TODO
+First, add a `jitpack` repository to your build file. Example for gradle:
+```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+```
+Then, add `datanews-java` as a dependency (`tag` below is some GitHub tag name - e.g. `v0.1`):
+```groovy
+dependencies {
+    implementation 'com.github.DatanewsOrg:datanews-java:<tag>'
+}
+```
 
 ## Usage
 Here is a small example of how you can use this library to query search API.
