@@ -19,10 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class HeadlinesParamsTest {
   @Test
   void testIncorrectParameterValues() {
-    // Size can be one of {10, 25, 100}.
+    // Size can be in the range [1; 100].
     assertThrows(IllegalArgumentException.class, () -> HeadlinesParams
         .builder()
-        .size(30)
+        .size(0)
+        .build());
+
+    assertThrows(IllegalArgumentException.class, () -> HeadlinesParams
+        .builder()
+        .size(101)
         .build());
 
     // Page cannot be negative.

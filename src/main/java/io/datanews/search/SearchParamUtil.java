@@ -45,8 +45,8 @@ final class SearchParamUtil {
       throw new IllegalArgumentException("'page' must be a positive integer or 0");
     }
 
-    if (size != null && size != 10 && size != 25 && size != 100) {
-      throw new IllegalArgumentException("'size' can only be one of {10, 25, 100}");
+    if (size != null && (size < 1 || size > 100)) {
+      throw new IllegalArgumentException("'size' can only be in the range [1; 100]");
     }
   }
 

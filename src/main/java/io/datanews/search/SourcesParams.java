@@ -62,7 +62,7 @@ public class SourcesParams {
    * Corresponds to {@code size} parameter.
    *
    * {@link IllegalArgumentException} is thrown from {@link SourcesParamsBuilder#build()} if
-   * this is not one of 10, 25, 100.
+   * this is not in the range [1; 100].
    */
   @Nullable
   Integer size;
